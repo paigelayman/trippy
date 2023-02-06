@@ -1,12 +1,12 @@
 const express = require("express")
-const mongoose = require("mongoose")
-const routes = require("./routes")
+// const mongoose = require("mongoose")
+// const routes = require("./routes")
 const db = require("./db")
 const cors = require("cors")
 const logger = require("morgan")
 const PORT = process.env.PORT || 3001
 
-mongoose.set("strictQuery", false)
+// mongoose.set("strictQuery", false)
 
 const app = express()
 
@@ -16,7 +16,7 @@ app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static(`${__dirname}/client/build`))
 
-app.use("/", routes)
+// app.use("/", routes)
 
 db.on("error", console.error.bind(console, "MongoDB connection error:"))
 
