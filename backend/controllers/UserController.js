@@ -1,5 +1,5 @@
-const { model } = require("mongoose")
-const { User } = require("../models")
+// const { model } = require("mongoose")
+const { User } = require('../models')
 
 //User Controllers
 const getAllUsers = async (req, res) => {
@@ -16,7 +16,7 @@ const createUser = async (req, res) => {
     const newUser = new User(req.body)
     await newUser.save()
     return res.status(201).json({
-      newUser,
+      newUser
     })
   } catch (error) {
     return res.status(500).json({ error: error.message })
@@ -30,7 +30,7 @@ const getUserById = async (req, res) => {
     if (user) {
       return res.status(200).json({ user })
     }
-    return res.status(404).send("User with the specified ID does not exists")
+    return res.status(404).send('User with the specified ID does not exists')
   } catch (error) {
     return res.status(500).send(error.message)
   }
@@ -38,7 +38,7 @@ const getUserById = async (req, res) => {
 const updateUser = async (req, res) => {
   try {
     const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
+      new: true
     })
     res.status(200).json(updatedUser)
   } catch (error) {
@@ -51,9 +51,9 @@ const deleteUser = async (req, res) => {
     const { id } = req.params
     const deletedUser = await User.findByIdAndDelete(id)
     if (deletedUser) {
-      return res.status(200).send("User deleted")
+      return res.status(200).send('User deleted')
     }
-    throw new Error("User not found")
+    throw new Error('User not found')
   } catch (error) {
     return res.status(500).send(error.message)
   }
@@ -64,5 +64,5 @@ module.exports = {
   createUser,
   getUserById,
   updateUser,
-  deleteUser,
+  deleteUser
 }
