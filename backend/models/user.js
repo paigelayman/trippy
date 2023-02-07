@@ -1,4 +1,5 @@
-const { Schema } = require('mongoose')
+const mongoose = require("mongoose")
+const Schema = mongoose.Schema
 
 const userSchema = new Schema(
   {
@@ -6,8 +7,8 @@ const userSchema = new Schema(
     username: { type: String, required: true },
     email: { type: String, required: true },
     password: { type: String, required: true },
-    favorites: [{ type: Schema.Types.ObjectId, ref: 'Favorite' }],
-    trips: [{ type: Schema.Types.ObjectId, ref: 'Trip' }]
+    favorites: [{ type: Schema.Types.ObjectId, ref: "Favorite" }],
+    trips: [{ type: Schema.Types.ObjectId, ref: "Trip" }],
   },
   { timestamps: true }
 )
